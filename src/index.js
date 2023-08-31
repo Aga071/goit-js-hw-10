@@ -14,6 +14,7 @@ import {
   catId,
   catInfoContener,
   loader,
+  catTemperament,
 } from './myVariables';
 
 fetchBreeds().then(cats => {
@@ -42,11 +43,10 @@ selectBreed.addEventListener('change', () => {
   let catImgUrl = '';
   const index = selectBreed.selectedIndex;
   fetchCatByBreed(selectBreed.value).then(imgs => {
-    console.log(imgs);
     for (const img of imgs) {
       catImgUrl = img.url;
     }
-
+    console.log(catImgUrl);
     const catImg = document.createElement('img');
     catImg.src = catImgUrl;
     catImg.width = 300;
@@ -60,14 +60,23 @@ selectBreed.addEventListener('change', () => {
     for (const cat of cats) {
       catBreed.push(cat.name);
       catInfo.push(cat.description);
+      catTemperament.push(cat.temperament);
     }
+    const infoDiv = document.createElement('div');
+
     const catHeading = document.createElement('h1');
     const index = selectBreed.selectedIndex;
     catHeading.textContent = selectBreed.options[index].text;
-    catInfoContener.append(catHeading);
+    infoDiv.append(catHeading);
 
     const catP = document.createElement('p');
     catP.textContent = catInfo[index];
-    catInfoContener.append(catP);
+    infoDiv.append(catP);
+
+    const catT = document.createElement('p');
+    catT.textContent = `Temperament: ${catTemperament[index]}`;
+    infoDiv.append(catT);
+
+    catInfoContener.append(infoDiv);
   });
 });

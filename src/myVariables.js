@@ -7,6 +7,8 @@ const catId = [];
 const catBreed = [];
 const selectList = [];
 const catInfo = [];
+const catTemperament = [];
+
 export {
   catInfo,
   selectList,
@@ -16,4 +18,5 @@ export {
   catInfoContener,
   loader,
   failure,
+  catTemperament,
 };
