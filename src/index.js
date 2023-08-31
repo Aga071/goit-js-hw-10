@@ -39,7 +39,7 @@ selectBreed.addEventListener('change', () => {
   loader.classList.remove('is-hiden');
   catInfoContener.innerHTML = '';
   catInfoContener.classList.add('is-hiden');
-  const catImgUrl = '';
+  let catImgUrl = '';
   const index = selectBreed.selectedIndex;
   fetchCatByBreed(selectBreed.value).then(imgs => {
     console.log(imgs);
